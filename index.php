@@ -3,15 +3,18 @@
 error_reporting(0);
 
 //pass some simple sanity checks
-
 if ( $_REQUEST['wallet'] == "" ) {echo "url should be in format http://host/index.php?wallet=0xasdfjasdlkjasdflkj"; exit;}
 if ( strlen($_REQUEST['wallet']) != "42" ) { echo "wallet should be 42 char, including the 0x beginning"; exit;}
 
 //include ethereum php library
 require 'ethereum-php/ethereum.php';
 //create object
-#$ethc = new Ethereum('198.23.249.179', 6588);
-$ethc = new Ethereum('127.0.0.1', 6588);
+//pirls official rpc server, made for things like this
+$ethc = new Ethereum('https://wallrpc.pirl.io/', '443');
+
+//use this if your running a local pirl node (be sure to start it up with --rpc after the command)
+#$ethc = new Ethereum('127.0.0.1', 6588);
+
 //if passed, capture wallet id
 $addr = $_REQUEST['wallet'];
 
