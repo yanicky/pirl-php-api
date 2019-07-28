@@ -18,7 +18,7 @@ foreach( $argv as $argument ) {
 // Create NewLine variable based on usage
 if ($argc > 0) {$NL = "\n";} else {$NL = "</br>";}
 
-//if passed, capture variables
+//if passed, capture wallet id
 $addr = $_REQUEST['wallet'];
 $CMD = $_REQUEST['CMD'];
 $CHAIN = $_REQUEST['chain'];
@@ -47,6 +47,10 @@ switch($CHAIN){
 	//use this if your running a local pirl node (be sure to start it up with --rpc after the command)
 	$ethc = new Ethereum('127.0.0.1', '6588');
 	break;
+
+default:
+	$ethc = new Ethereum('https://wallrpc.pirl.io/', '443');
+        break;
 }
 
 switch($CMD)
@@ -55,15 +59,11 @@ switch($CMD)
 	// get_blockNumber
 	$res = $ethc->eth_blockNumber();
 	$blocknum = hexdec($res);
-
 	//setup array for json encoding
 	$assocArray = array();
 	$assocArray['jsonrpc'] = '2.0';
 	$assocArray['id'] = '1';
 	$assocArray['result'] = ''.hexdec($res).'';
-
-	//print_r($assocArray);
-
 	//encode in json format
 	$jsondata = json_encode($assocArray);
 	break;
@@ -71,29 +71,24 @@ switch($CMD)
 	case "getBalance":
 	//get balance
 	$dec = $ethc->eth_getBalance($addr, "latest");
-
 	//convert from hex to decimal, then to human type numbers
 	// 10 decimal spots, with a period, no thousands separator  = 1119.8800567580
-
 	$pirl = number_format((hexdec($dec)/1000000000000000000), 10, ".", "");
-
 	//setup array for json encoding
 	$assocArray = array();
 	$assocArray['wallet'] = ''.$addr.'';
 	$assocArray['balance'] = ''.$pirl.'';
-
-	//print_r($assocArray);
-
 	//encode in json format
 	$jsondata = json_encode($assocArray);
 	break;
-
+	
 	case "help":
 	echo "********************" . $NL;
 	echo "Printing Help" . $NL. $NL;
 	echo "options are CMD=[getBalance, blockNumber] chain=[Pirl, Ethereum, localhost]" . $NL;
 	echo "ie: php index.php --CMD=blockNumber --chain=Pirl" . $NL;
 	echo "url syntax when using a web server: http://host/index.php?wallet=0xasdfjasdlkjasdflkj&chain=Pirl&CMD=blockNumber";
+	
 	default: 
 	echo "This should not happen" . $NL;
 	echo "please use --CMD=help for more details" . $NL;
