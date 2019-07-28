@@ -13,11 +13,12 @@ foreach( $argv as $argument ) {
         // Optionally store the variable in $_REQUEST
         $_REQUEST[ $variableName ] = $variableValue;
 }
-
+// Create NewLine variable based on usage
+if ($argc > 0) {$NL = "\n";} else {$NL = "</br>";}
 
 //pass some simple sanity checks
-if ( $_REQUEST['wallet'] == "" ) {echo "url should be in format http://host/index.php?wallet=0xasdfjasdlkjasdflkj"; exit;}
-if ( strlen($_REQUEST['wallet']) != "42" ) { echo "wallet should be 42 char, including the 0x beginning"; exit;}
+if ( $_REQUEST['wallet'] == "" ) {echo "url should be in format 'http://host/index.php?wallet=0xasdfjasdlkjasdflkj' or using --wallet=yourwallethere from php-cli" . $NL; exit;}
+if ( strlen($_REQUEST['wallet']) != "42" ) { echo "wallet should be 42 char, including the 0x beginning" . $NL; exit;}
 
 //include ethereum php library
 require 'ethereum-php/ethereum.php';
@@ -34,7 +35,7 @@ $addr = $_REQUEST['wallet'];
 //get balance
 $dec = $ethc->eth_getBalance($addr, "latest");
 
-//convert from hex to dev, then to human type numbers
+//convert from hex to decimal, then to human type numbers
 // 10 decimal spots, with a period, no thousands separator  = 1119.8800567580
 
 $pirl = number_format((hexdec($dec)/1000000000000000000), 10, ".", "");
@@ -50,14 +51,5 @@ $assocArray['balance'] = ''.$pirl.'';
 $jsondata = json_encode($assocArray);
 
 //finally, echo result of the work.
-echo $jsondata;
-
-if ($argc > 0) {
-    // Command line was used
-echo "\n";
-} else {
-    // Browser was used
-echo "</br>";
-}
-
+echo $jsondata . $NL;
 ?>
