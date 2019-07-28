@@ -1,7 +1,8 @@
 <?php
 // Library by phatblinkie to help with a simple query for scripts to access
-//
+// 
 
+// Set Error Level
 error_reporting(0);
 
 // To be used with php-cli in console php index.php --wallet=yourwalletaddresshere
@@ -18,7 +19,7 @@ foreach( $argv as $argument ) {
 // Create NewLine variable based on usage
 if ($argc > 0) {$NL = "\n";} else {$NL = "</br>";}
 
-//if passed, capture wallet id
+//if passed, capture variables
 $addr = $_REQUEST['wallet'];
 $CMD = $_REQUEST['CMD'];
 $CHAIN = $_REQUEST['chain'];
