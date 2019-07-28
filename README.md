@@ -21,11 +21,11 @@ This version Default on the Pirl(https://wallrpc.pirl.io:443) but Cloudflare's E
 
 If you want to have it served by a webserver, put the files into the web root directory and try a url syntax like these: 
 
-  http://hostname/path/to/index.php?chain=Pirl&CMD=blockNumber
+  http(s)://hostname/path/to/index.php?chain=Pirl&CMD=blockNumber
 
-  http://hostname/path/to/index.php?wallet=youraddresshere
+  http(s)://hostname/path/to/index.php?wallet=youraddresshere
   
-  http://hostname/path/to/index.php?CMD=help  
+  http(s)://hostname/path/to/index.php?CMD=help  
 
 Feel free to add pull requests or fork it for your own usage.
 
