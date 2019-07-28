@@ -1,5 +1,5 @@
 # pirl-php-api
-Cryptopools.info is providing this api for public us as desired at the following url
+Cryptopools.info is providing the orginal API for public use on Pirl Network at the following url
 http://pirlbalance.cryptopools.info/index.php?wallet=0x16e2ef393bcccaa6a9448b6ed36a6d180c61092e
 
 json output would be something like
@@ -10,21 +10,18 @@ json output would be something like
 
 just replace that wallet with your own.
 
-feel free to add pull requests, or fork for your own usage
-
-ideas this can help with for instance include
-scripting daily balance reports
-ok, other things :)
 this would also work for nearly any ethash based coin, just change the port to the coins rpc port.
 
-How to run this?
+How to run this version?
 install php-cli and php-curl if needed. you can then run it with command line client using wallet argument.
 
-$php index.php --wallet=yourwalletaddresshere
+$php index.php --wallet=yourwalletaddresshere [--chain=Pirl, Ethereum] [--CMD=getBalance, blockNumber, help]
 
-If you want to have it serve up by a webserver, put the files into the web servers root directory and try the format above
+This version Default on the Pirl(https://wallrpc.pirl.io:443) but Cloudflare's Ethereum Gateway(https://cloudflare-eth.com:443) can be used using --chain=[Pirl, Ethereum, localhost] optional parameter.
 
-you can use https://wallrpc.pirl.io:443 for the rpc address or run a pirl node locally and set it to localhost:6588 for local rpc calls
+If you want to have it serve up by a webserver, put the files into the web root directory and try a url syntax like: 
+http://host/index.php?chain=Pirl&CMD=blockNumber
 
+Feel free to add pull requests or fork it for your own usage.
 
-:)
+The library under the hood has been forked from PhatBlinkie(https://github.com/phatblinkie/pirl-php-api), Thank's.
