@@ -24,4 +24,4 @@ http://host/index.php?chain=Pirl&CMD=blockNumber
 
 Feel free to add pull requests or fork it for your own usage.
 
-The library under the hood has been forked from PhatBlinkie(https://github.com/phatblinkie/pirl-php-api), Thank's.
+The library under the hood has been forked from PhatBlinkie(https://github.com/phatblinkie/pirl-php-api), Thanks.
