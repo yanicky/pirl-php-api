@@ -51,6 +51,7 @@ switch($CHAIN){
 
 default:
 	$ethc = new Ethereum('https://wallrpc.pirl.io/', '443');
+	$CHAIN="Pirl";
         break;
 }
 
