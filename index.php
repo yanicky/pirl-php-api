@@ -1,5 +1,7 @@
 <?php
-//created by phatblinkie to help with a simple query for scripts to access
+// Library by phatblinkie to help with a simple query for scripts to access
+//
+
 error_reporting(0);
 
 // To be used with php-cli in console php index.php --wallet=yourwalletaddresshere
@@ -16,40 +18,87 @@ foreach( $argv as $argument ) {
 // Create NewLine variable based on usage
 if ($argc > 0) {$NL = "\n";} else {$NL = "</br>";}
 
+//if passed, capture variables
+$addr = $_REQUEST['wallet'];
+$CMD = $_REQUEST['CMD'];
+$CHAIN = $_REQUEST['chain'];
+
 //pass some simple sanity checks
+if (!$CMD){ $CMD = "getBalance";}
+if(!$CHAIN){ $CHAIN = "Pirl";}
 if ( $_REQUEST['wallet'] == "" ) {echo "url should be in format 'http://host/index.php?wallet=0xasdfjasdlkjasdflkj' or using --wallet=yourwallethere from php-cli" . $NL; exit;}
 if ( strlen($_REQUEST['wallet']) != "42" ) { echo "wallet should be 42 char, including the 0x beginning" . $NL; exit;}
 
-//include ethereum php library
+
+//include ethereum php library and create object
 require 'ethereum-php/ethereum.php';
-//create object
-//pirls official rpc server, made for things like this
-$ethc = new Ethereum('https://wallrpc.pirl.io/', '443');
 
-//use this if your running a local pirl node (be sure to start it up with --rpc after the command)
-//$ethc = new Ethereum('127.0.0.1', 6588);
+switch($CHAIN){
+ case "Pirl":
+	//pirls official rpc server, made for things like this
+	$ethc = new Ethereum('https://wallrpc.pirl.io/', '443');
+	break;
 
-//if passed, capture wallet id
-$addr = $_REQUEST['wallet'];
+ case "Ethereum":
+	//use --chain=Ethereum to connect to the cloudFlare Ethereum RPC Gateway
+	$ethc = new Ethereum('https://cloudflare-eth.com', '443');
+	break;
+ case "localhost":
+	//use this if your running a local pirl node (be sure to start it up with --rpc after the command)
+	$ethc = new Ethereum('127.0.0.1', '6588');
+	break;
+}
 
-//get balance
-$dec = $ethc->eth_getBalance($addr, "latest");
+switch($CMD)
+	{
+	case "blockNumber":
+	// get_blockNumber
+	$res = $ethc->eth_blockNumber();
+	$blocknum = hexdec($res);
 
-//convert from hex to decimal, then to human type numbers
-// 10 decimal spots, with a period, no thousands separator  = 1119.8800567580
+	//setup array for json encoding
+	$assocArray = array();
+	$assocArray['jsonrpc'] = '2.0';
+	$assocArray['id'] = '1';
+	$assocArray['result'] = ''.hexdec($res).'';
 
-$pirl = number_format((hexdec($dec)/1000000000000000000), 10, ".", "");
+	//print_r($assocArray);
 
-//setup array for json encoding
-$assocArray = array();
-$assocArray['wallet'] = ''.$addr.'';
-$assocArray['balance'] = ''.$pirl.'';
+	//encode in json format
+	$jsondata = json_encode($assocArray);
+	break;
+	
+	case "getBalance":
+	//get balance
+	$dec = $ethc->eth_getBalance($addr, "latest");
 
-//print_r($assocArray);
+	//convert from hex to decimal, then to human type numbers
+	// 10 decimal spots, with a period, no thousands separator  = 1119.8800567580
 
-//encode in json format
-$jsondata = json_encode($assocArray);
+	$pirl = number_format((hexdec($dec)/1000000000000000000), 10, ".", "");
 
+	//setup array for json encoding
+	$assocArray = array();
+	$assocArray['wallet'] = ''.$addr.'';
+	$assocArray['balance'] = ''.$pirl.'';
+
+	//print_r($assocArray);
+
+	//encode in json format
+	$jsondata = json_encode($assocArray);
+	break;
+
+	case "help":
+	echo "********************" . $NL;
+	echo "Printing Help" . $NL. $NL;
+	echo "options are CMD=[getBalance, blockNumber] chain=[Pirl, Ethereum, local]" . $NL;
+	echo "ie: php index.php --CMD=blockNumber --chain=Pirl" . $NL;
+	echo "url syntax when using a web server: http://host/index.php?wallet=0xasdfjasdlkjasdflkj&chain=Pirl&CMD=blockNumber";
+	default: 
+	echo "This should not happen" . $NL;
+	echo "please use --CMD=help for more details" . $NL;
+	break;
+}
 //finally, echo result of the work.
 echo $jsondata;
 ?>
