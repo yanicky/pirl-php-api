@@ -52,6 +52,8 @@ $jsondata = json_encode($assocArray);
 //finally, echo result of the work.
 echo $jsondata;
 
+/*
+uncomment if you want the results to retrun newline, or a html br tag. - could cause prroblems to come api clients.
 if ($argc > 0) {
     // Command line was used
 echo "\n";
@@ -59,5 +61,6 @@ echo "\n";
     // Browser was used
 echo "</br>";
 }
+*/
 
 ?>
