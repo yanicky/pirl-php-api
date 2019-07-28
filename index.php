@@ -51,5 +51,5 @@ $assocArray['balance'] = ''.$pirl.'';
 $jsondata = json_encode($assocArray);
 
 //finally, echo result of the work.
-echo $jsondata . $NL;
+echo $jsondata;
 ?>
