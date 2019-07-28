@@ -19,9 +19,13 @@ $php index.php --wallet=yourwalletaddresshere [--chain=Pirl, Ethereum] [--CMD=ge
 
 This version Default on the Pirl(https://wallrpc.pirl.io:443) but Cloudflare's Ethereum Gateway(https://cloudflare-eth.com:443) can be used using --chain=[Pirl, Ethereum, localhost] optional parameter.
 
-If you want to have it serve up by a webserver, put the files into the web root directory and try a url syntax like: 
+If you want to have it served by a webserver, put the files into the web root directory and try a url syntax like these: 
 
-http://host/index.php?chain=Pirl&CMD=blockNumber
+  http://hostname/path/to/index.php?chain=Pirl&CMD=blockNumber
+
+  http://hostname/path/to/index.php?wallet=youraddresshere
+  
+  http://hostname/path/to/index.php?CMD=help  
 
 Feel free to add pull requests or fork it for your own usage.
 
