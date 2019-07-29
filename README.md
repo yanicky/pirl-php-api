@@ -26,4 +26,4 @@ If you want to have it served by a webserver, put the files into the web root di
 
 Feel free to add pull requests or fork it for your own usage.
 
-The library under the hood has been forked @PhatBlinkie(https://github.com/phatblinkie/pirl-php-api), Thanks.
+The library under the hood has been forked @PhatBlinkie (https://github.com/phatblinkie/pirl-php-api), Thanks.
