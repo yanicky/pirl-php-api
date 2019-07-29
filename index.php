@@ -22,12 +22,19 @@ foreach( $argv as $argument ) {
 // Create NewLine variable based on usage
 if ($argc > 0) {$NL = "\n";} else {$NL = "</br>";}
 
-//if requested, capture variables
+//if requested, setup variables
 $addr = $_REQUEST['wallet'];
 $CMD = $_REQUEST['CMD'];
 $CHAIN = $_REQUEST['chain'];
 $RPCHOST = $_REQUEST['rpchost'];
 $RPCPORT = $_REQUEST['rpcport'];
+
+// If Required uncomment/force some parameters here
+//$addr = "yourwallethere";
+//$CMD = "getBalance";
+//$CHAIN = "local";
+//$RPCHOST = "localhost";
+//$RPCPORT = 6588;
 
 //pass some simple sanity checks
 if (!$CMD){ $CMD = "getBalance";}
