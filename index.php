@@ -93,7 +93,10 @@ switch($CMD)
 	echo "Printing Help" . $NL. $NL;
 	echo "options are CMD=[getBalance, blockNumber] chain=[Pirl, Ethereum, localhost]" . $NL;
 	echo "ie: php index.php --CMD=blockNumber --chain=Pirl" . $NL;
-	echo "url syntax when using a web server: http://host/index.php?wallet=0xasdfjasdlkjasdflkj&chain=Pirl&CMD=blockNumber" . $NL;
+	echo "url syntax examples when using a web server:" . $NL;
+	echo "http(s)://hostname/path/to/index.php?chain=Pirl&CMD=blockNumber" . $NL;
+	echo "http(s)://hostname/path/to/index.php?wallet=youraddresshere" . $NL;
+	echo "http(s)://hostname/path/to/index.php?CMD=help" . $NL;
 	break;
 	
 	default: 
