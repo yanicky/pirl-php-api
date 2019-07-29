@@ -44,7 +44,7 @@ switch($CHAIN){
 	//use --chain=Ethereum to connect to the cloudFlare Ethereum RPC Gateway
 	$ethc = new Ethereum('https://cloudflare-eth.com', '443');
 	break;
- case "localhost":
+ case "local":
 	//use this if your running a local pirl node (be sure to start it up with --rpc after the command)
 	$ethc = new Ethereum('127.0.0.1', '6588');
 	break;
@@ -90,7 +90,7 @@ switch($CMD)
 	case "help":
 	echo "********************" . $NL;
 	echo "Printing Help" . $NL. $NL;
-	echo "options are CMD=[getBalance, blockNumber] chain=[Pirl, Ethereum, localhost]" . $NL;
+	echo "options are CMD=[getBalance, blockNumber] chain=[Pirl, Ethereum, local]" . $NL;
 	echo "ie: php index.php --CMD=blockNumber --chain=Pirl" . $NL;
 	echo "url syntax examples when using a web server:" . $NL;
 	echo "http(s)://hostname/path/to/index.php?chain=Pirl&CMD=blockNumber" . $NL;
