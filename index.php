@@ -31,7 +31,6 @@ $RPCPORT = $_REQUEST['rpcport'];
 
 //pass some simple sanity checks
 if (!$CMD){ $CMD = "getBalance";}
-//if(!$CHAIN){ $CHAIN = "Pirl";}
 
 //include ethereum-php library, select chain and create object
 require 'ethereum-php/ethereum.php';
@@ -99,8 +98,8 @@ switch($CMD)
 	echo "url syntax examples when using a web server:" . $NL;
 	echo "http(s)://hostname/path/to/index.php?chain=Pirl&CMD=blockNumber" . $NL;
 	echo "http(s)://hostname/path/to/index.php?wallet=youraddresshere" . $NL;
-	echo "http(s)://hostname/path/to/index.php?CMD=help" . $NL;
 	echo "http(s)://hostname/path/to/index.php?wallet=youraddresshere&chain=local&rpchost=localhost&rpcport=6588" . $NL;
+	echo "http(s)://hostname/path/to/index.php?CMD=help" . $NL;
 	break;
 	
 	default: 
