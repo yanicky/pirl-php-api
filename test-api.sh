@@ -23,7 +23,7 @@ echo "***";
 echo "Testing peerCount with default parameter";
 php index.php --CMD=peerCount;
 echo "***";
-echo "Testing peerCount with default parameter";
+echo "Testing peerCount with Ethereum parameter";
 php index.php --CMD=peerCount --chain=Ethereum;
 echo "***";
 
