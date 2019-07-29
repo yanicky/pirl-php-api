@@ -8,7 +8,7 @@
 // Set Error Level
 error_reporting(0);
 
-// To be used with php-cli in console php index.php --wallet=yourwalletaddresshere
+// To be used with php-cli in console (ie: php index.php --wallet=yourwalletaddresshere)
 foreach( $argv as $argument ) {
         if( $argument == $argv[ 0 ] ) continue;
 
@@ -32,7 +32,7 @@ if (!$CMD){ $CMD = "getBalance";}
 if(!$CHAIN){ $CHAIN = "Pirl";}
 
 
-//include ethereum php library and create object
+//include ethereum-php library, select chain and create object
 require 'ethereum-php/ethereum.php';
 
 switch($CHAIN){
@@ -106,6 +106,6 @@ switch($CMD)
 	break;
 }
 //finally, echo result of the work.
-echo $jsondata;
+if($jsondata!=""){echo $jsondata;}
 
 ?>
