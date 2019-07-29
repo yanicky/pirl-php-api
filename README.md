@@ -24,7 +24,7 @@ or
   
   ./test-api.sh;
 
-This version Default on the Pirl(https://wallrpc.pirl.io:443) but Cloudflare's Ethereum Gateway(https://cloudflare-eth.com:443) can be used using --chain=[Pirl, Ethereum, local] optional parameter.
+This version Default on the Pirl(https://wallrpc.pirl.io:443) but Cloudflare's Ethereum Gateway(https://cloudflare-eth.com:443) or any other json-rpc server using --chain=[Pirl, Ethereum, local] optionals parameter.
 
 If you want to have it served by a webserver, put the files into the web root directory and try a url syntax like these: 
 
