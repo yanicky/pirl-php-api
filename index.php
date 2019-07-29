@@ -22,7 +22,7 @@ foreach( $argv as $argument ) {
 // Create NewLine variable based on usage
 if ($argc > 0) {$NL = "\n";} else {$NL = "</br>";}
 
-//if passed, capture variables
+//if requested, capture variables
 $addr = $_REQUEST['wallet'];
 $CMD = $_REQUEST['CMD'];
 $CHAIN = $_REQUEST['chain'];
@@ -30,7 +30,6 @@ $CHAIN = $_REQUEST['chain'];
 //pass some simple sanity checks
 if (!$CMD){ $CMD = "getBalance";}
 if(!$CHAIN){ $CHAIN = "Pirl";}
-
 
 //include ethereum-php library, select chain and create object
 require 'ethereum-php/ethereum.php';
@@ -72,10 +71,10 @@ switch($CMD)
 	break;
 	
 	case "getBalance":
-	if ( $addr == "" ) {echo "url should be in format 'http://host/index.php?wallet=0xasdfjasdlkjasdflkj' or using --wallet=yourwallethere from php-cli" . $NL; exit;}
+	// verify validity of the required variables
+	if ( $addr == "" ) {echo "url should be in format 'http(s)://hostname/path/to/index.php?wallet=youraddresshere' or using --wallet=yourwallethere from php-cli" . $NL; exit;}
 	if ( strlen($addr) != "42" ) { echo "wallet should be 42 char, including the 0x beginning" . $NL; exit;}
-
-	//get balance
+	// Get the Data
 	$res = $ethc->eth_getBalance($addr, "latest");
 	//convert result from hex to decimal, then to human type numbers
 	// 10 decimal spots, with a period, no thousands separator  = 1119.8800567580
