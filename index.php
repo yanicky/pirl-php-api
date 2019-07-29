@@ -94,12 +94,13 @@ switch($CMD)
 	case "help":
 	echo "********************" . $NL;
 	echo "Printing Help" . $NL. $NL;
-	echo "options are CMD=[getBalance, blockNumber] chain=[Pirl, Ethereum, local]" . $NL;
+	echo "options are CMD=[getBalance, blockNumber], chain=[Pirl, Ethereum, local], [rpchost=IP, Hostname] and [rpcport=PortNum]" . $NL;
 	echo "ie: php index.php --CMD=blockNumber --chain=Pirl" . $NL;
 	echo "url syntax examples when using a web server:" . $NL;
 	echo "http(s)://hostname/path/to/index.php?chain=Pirl&CMD=blockNumber" . $NL;
 	echo "http(s)://hostname/path/to/index.php?wallet=youraddresshere" . $NL;
 	echo "http(s)://hostname/path/to/index.php?CMD=help" . $NL;
+	echo "http(s)://hostname/path/to/index.php?wallet=youraddresshere&chain=local&rpchost=localhost&rpcport=6588" . $NL;
 	break;
 	
 	default: 
