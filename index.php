@@ -91,6 +91,7 @@ switch($CMD)
 	echo "options are CMD=[getBalance, blockNumber] chain=[Pirl, Ethereum, localhost]" . $NL;
 	echo "ie: php index.php --CMD=blockNumber --chain=Pirl" . $NL;
 	echo "url syntax when using a web server: http://host/index.php?wallet=0xasdfjasdlkjasdflkj&chain=Pirl&CMD=blockNumber" . $NL;
+	break;
 	
 	default: 
 	echo "This should not happen" . $NL;
