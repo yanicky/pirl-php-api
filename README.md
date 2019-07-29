@@ -16,12 +16,13 @@ $php index.php --wallet=yourwalletaddresshere [--chain=Pirl, Ethereum] [--CMD=ge
 
 You can also run the test-api.sh like this.
   
-  /bin/sh test-api.sh
+  /bin/sh test-api.sh;
   
 or 
 
-  chmod +x test-api.sh
-  ./test-api.sh
+  chmod +x test-api.sh;
+  
+  ./test-api.sh;
 
 This version Default on the Pirl(https://wallrpc.pirl.io:443) but Cloudflare's Ethereum Gateway(https://cloudflare-eth.com:443) can be used using --chain=[Pirl, Ethereum, localhost] optional parameter.
 
