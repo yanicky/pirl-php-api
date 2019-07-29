@@ -26,10 +26,12 @@ if ($argc > 0) {$NL = "\n";} else {$NL = "</br>";}
 $addr = $_REQUEST['wallet'];
 $CMD = $_REQUEST['CMD'];
 $CHAIN = $_REQUEST['chain'];
+$RPCHOST = $_REQUEST['rpchost'];
+$RPCPORT = $_REQUEST['rpcport'];
 
 //pass some simple sanity checks
 if (!$CMD){ $CMD = "getBalance";}
-if(!$CHAIN){ $CHAIN = "Pirl";}
+//if(!$CHAIN){ $CHAIN = "Pirl";}
 
 //include ethereum-php library, select chain and create object
 require 'ethereum-php/ethereum.php';
@@ -46,7 +48,9 @@ switch($CHAIN){
 	break;
  case "local":
 	//use this if your running a local pirl node (be sure to start it up with --rpc after the command)
-	$ethc = new Ethereum('127.0.0.1', '6588');
+	if(!$RPCHOST){ $RPCHOST = "localhost";}
+	if(!$RPCPORT){ $RPCPORT = "6588";}	
+	$ethc = new Ethereum($RPCHOST, $RPCPORT);
 	break;
 
 default:
