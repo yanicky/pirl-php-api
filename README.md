@@ -15,9 +15,11 @@ install php-cli and php-curl if needed. you can then run it with command line cl
 $php index.php --wallet=yourwalletaddresshere [--chain=Pirl, Ethereum] [--CMD=getBalance, blockNumber, help]
 
 You can also run the test-api.sh like this.
+  
   /bin/sh test-api.sh
-
+  
 or 
+
   chmod +x test-api.sh
   ./test-api.sh
 
