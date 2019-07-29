@@ -70,7 +70,7 @@ switch($CMD)
 	case "net_version":
         // net_version
         $res = $ethc->net_version();
-        $netversion = hexdec($res);
+        $netversion = $res;
         //setup array for json encoding
         $assocArray = array();
         $assocArray['jsonrpc'] = '2.0';
