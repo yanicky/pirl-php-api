@@ -80,6 +80,19 @@ switch($CMD)
 	$jsondata = json_encode($assocArray);
 	break;
 	
+	case "peerCount":
+        // net_peerCount
+        $res = $ethc->net_peerCount();
+        $peercount = hexdec($res);
+        //setup array for json encoding
+        $assocArray = array();
+        $assocArray['jsonrpc'] = '2.0';
+        $assocArray['id'] = '1';
+        $assocArray['result'] = ''.hexdec($res).'';
+        //encode in json format
+        $jsondata = json_encode($assocArray);
+        break;
+		
 	case "getBalance":
 	// verify validity of the required variables
 	if ( $addr == "" ) {echo "url should be in format 'http(s)://hostname/path/to/index.php?wallet=youraddresshere' or using --wallet=yourwallethere from php-cli" . $NL; exit;}
@@ -100,7 +113,7 @@ switch($CMD)
 	case "help":
 	echo "********************" . $NL;
 	echo "Printing Help" . $NL. $NL;
-	echo "options are CMD=[getBalance, blockNumber], chain=[Pirl, Ethereum, local], [rpchost=IP, Hostname] and [rpcport=PortNum]" . $NL;
+	echo "options are CMD=[getBalance, blockNumber, peerCount], chain=[Pirl, Ethereum, local], [rpchost=IP, Hostname] and [rpcport=PortNum]" . $NL;
 	echo "ie: php index.php --CMD=blockNumber --chain=Pirl" . $NL;
 	echo "url syntax examples when using a web server:" . $NL;
 	echo "http(s)://hostname/path/to/index.php?chain=Pirl&CMD=blockNumber" . $NL;
