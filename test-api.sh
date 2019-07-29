@@ -14,7 +14,7 @@ echo "***";
 echo "Testing getBalance with bad chain parameter";
 php index.php --wallet=0x256b2b26Fe8eCAd201103946F8C603b401cE16EC --chain=Ethereu;
 echo "***";
-echo "Testing blockNumber with Ethereum chain";
+echo "Testing blockNumber with Pirl chain";
 php index.php --chain=Pirl --CMD=blockNumber;
 echo "***";
 echo "Testing blockNumber with Ethereum chain";
