@@ -12,7 +12,7 @@ this would also work for nearly any ethash based coin, just change the port to t
 How to run this version?
 install php-cli and php-curl if needed. you can then run it with command line client using wallet argument.
 
-$php index.php --wallet=yourwalletaddresshere [--chain=Pirl, Ethereum, local] [--CMD=getBalance, blockNumber, peerCount, help]
+$php index.php --wallet=yourwalletaddresshere [--chain=Pirl, Ethereum, local] [--CMD=net_version, getBalance, blockNumber, peerCount, help]
 
 You can also run the test-api.sh like this.
   
