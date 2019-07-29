@@ -2,11 +2,8 @@
 Cryptopools.info is providing the orginal API for public use on Pirl Network at the following url
 http://pirlbalance.cryptopools.info/index.php?wallet=0x256b2b26Fe8eCAd201103946F8C603b401cE16EC
 
-json output would be something like
-{
-"wallet":"0x256b2b26Fe8eCAd201103946F8C603b401cE16EC",
-"balance":"1119.8800567580"
-}
+json output would be something like:
+{"wallet":"0x256b2b26Fe8eCAd201103946F8C603b401cE16EC","balance":"15720000.0000000000"}
 
 just replace that wallet with your own.
 
