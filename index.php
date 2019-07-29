@@ -67,6 +67,19 @@ default:
 
 switch($CMD)
 	{
+	case "net_version":
+        // net_version
+        $res = $ethc->net_version();
+        $netversion = hexdec($res);
+        //setup array for json encoding
+        $assocArray = array();
+        $assocArray['jsonrpc'] = '2.0';
+        $assocArray['id'] = '1';
+        $assocArray['result'] = ''.$netversion.'';
+        //encode in json format
+        $jsondata = json_encode($assocArray);
+        break;
+	
 	case "blockNumber":
 	// get_blockNumber
 	$res = $ethc->eth_blockNumber();
@@ -113,7 +126,7 @@ switch($CMD)
 	case "help":
 	echo "********************" . $NL;
 	echo "Printing Help" . $NL. $NL;
-	echo "options are CMD=[getBalance, blockNumber, peerCount], chain=[Pirl, Ethereum, local], [rpchost=IP, Hostname] and [rpcport=PortNum]" . $NL;
+	echo "options are CMD=[net_version, getBalance, blockNumber, peerCount], chain=[Pirl, Ethereum, local], [rpchost=IP, Hostname] and [rpcport=PortNum]" . $NL;
 	echo "ie: php index.php --CMD=blockNumber --chain=Pirl" . $NL;
 	echo "url syntax examples when using a web server:" . $NL;
 	echo "http(s)://hostname/path/to/index.php?chain=Pirl&CMD=blockNumber" . $NL;
