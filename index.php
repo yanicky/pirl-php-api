@@ -73,10 +73,10 @@ switch($CMD)
 	if ( strlen($addr) != "42" ) { echo "wallet should be 42 char, including the 0x beginning" . $NL; exit;}
 
 	//get balance
-	$dec = $ethc->eth_getBalance($addr, "latest");
-	//convert from hex to decimal, then to human type numbers
+	$res = $ethc->eth_getBalance($addr, "latest");
+	//convert result from hex to decimal, then to human type numbers
 	// 10 decimal spots, with a period, no thousands separator  = 1119.8800567580
-	$pirl = number_format((hexdec($dec)/1000000000000000000), 10, ".", "");
+	$pirl = number_format((hexdec($res)/1000000000000000000), 10, ".", "");
 	//setup array for json encoding
 	$assocArray = array();
 	$assocArray['wallet'] = ''.$addr.'';
@@ -94,7 +94,8 @@ switch($CMD)
 	break;
 	
 	default: 
-	echo "This should not happen" . $NL;
+	echo "********************" . $NL;
+	echo "Error: CMD value is invalid." . $NL; 
 	echo "please use --CMD=help for more details" . $NL;
 	break;
 }
