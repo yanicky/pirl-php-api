@@ -1,6 +1,9 @@
 <?php
-// Library by phatblinkie to help with a simple query for scripts to access
-// 
+// Library forked from phatblinkie and modded to help with simple query on Pirl.io and Ethereum type node.
+// Tested with php-cli and php-fpm
+//
+// require php-curl to be installed/enabled.
+// require 'ethereum-php/ethereum.php';
 
 // Set Error Level
 error_reporting(0);
