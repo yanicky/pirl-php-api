@@ -27,8 +27,6 @@ $CHAIN = $_REQUEST['chain'];
 //pass some simple sanity checks
 if (!$CMD){ $CMD = "getBalance";}
 if(!$CHAIN){ $CHAIN = "Pirl";}
-if ( $_REQUEST['wallet'] == "" ) {echo "url should be in format 'http://host/index.php?wallet=0xasdfjasdlkjasdflkj' or using --wallet=yourwallethere from php-cli" . $NL; exit;}
-if ( strlen($_REQUEST['wallet']) != "42" ) { echo "wallet should be 42 char, including the 0x beginning" . $NL; exit;}
 
 
 //include ethereum php library and create object
@@ -71,6 +69,9 @@ switch($CMD)
 	break;
 	
 	case "getBalance":
+	if ( $addr == "" ) {echo "url should be in format 'http://host/index.php?wallet=0xasdfjasdlkjasdflkj' or using --wallet=yourwallethere from php-cli" . $NL; exit;}
+	if ( strlen($addr) != "42" ) { echo "wallet should be 42 char, including the 0x beginning" . $NL; exit;}
+
 	//get balance
 	$dec = $ethc->eth_getBalance($addr, "latest");
 	//convert from hex to decimal, then to human type numbers
