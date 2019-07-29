@@ -33,6 +33,7 @@ $RPCPORT = $_REQUEST['rpcport'];
 //$addr = "yourwallethere";
 //$CMD = "getBalance";
 //$CHAIN = "local";
+// The RPCHOST and RPCPORT only override settings if($CHAIN == "local").
 //$RPCHOST = "localhost";
 //$RPCPORT = 6588;
 
