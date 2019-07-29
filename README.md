@@ -32,6 +32,8 @@ If you want to have it served by a webserver, put the files into the web root di
 
   http(s)://hostname/path/to/index.php?wallet=youraddresshere
   
+  http(s)://hostname/path/to/index.php?wallet=youraddresshere&chain=local&rpchost=localhost&rpcport=6588
+  
   http(s)://hostname/path/to/index.php?CMD=help  
 
 Feel free to add pull requests or fork it for your own usage.
