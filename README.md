@@ -14,6 +14,13 @@ install php-cli and php-curl if needed. you can then run it with command line cl
 
 $php index.php --wallet=yourwalletaddresshere [--chain=Pirl, Ethereum] [--CMD=getBalance, blockNumber, help]
 
+You can also run the test-api.sh like this.
+  /bin/sh test-api.sh
+
+or 
+  chmod +x test-api.sh
+  ./test-api.sh
+
 This version Default on the Pirl(https://wallrpc.pirl.io:443) but Cloudflare's Ethereum Gateway(https://cloudflare-eth.com:443) can be used using --chain=[Pirl, Ethereum, localhost] optional parameter.
 
 If you want to have it served by a webserver, put the files into the web root directory and try a url syntax like these: 
