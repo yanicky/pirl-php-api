@@ -38,4 +38,4 @@ If you want to have it served by a webserver, put the files into the webroot dir
 
 Feel free to add pull requests or fork it for your own usage.
 
-The library under the hood has been forked @PhatBlinkie (https://github.com/phatblinkie/pirl-php-api), Thanks.
+While the library and some code under the hood has been forked @PhatBlinkie (https://github.com/phatblinkie/pirl-php-api), but the library seem to be from Brandon Telle(2015). Thanks.
