@@ -23,6 +23,7 @@ foreach( $argv as $argument ) {
 if ($argc > 0) {$NL = "\n";} else {$NL = "</br>";}
 
 //if requested, setup variables
+$ID = $_REQUEST['id'];
 $addr = $_REQUEST['wallet'];
 $CMD = $_REQUEST['CMD'];
 $CHAIN = $_REQUEST['chain'];
@@ -39,7 +40,7 @@ $RPCPORT = $_REQUEST['rpcport'];
 
 //pass some simple sanity checks
 if (!$CMD){ $CMD = "getBalance";}
-
+if (!$ID){ $ID = 1;}
 //include ethereum-php library, select chain and create object
 require 'ethereum-php/ethereum.php';
 
@@ -75,7 +76,7 @@ switch($CMD)
         //setup array for json encoding
         $assocArray = array();
         $assocArray['jsonrpc'] = '2.0';
-        $assocArray['id'] = '1';
+        $assocArray['id'] = $ID;
         $assocArray['result'] = ''.$web3_clientVersion.'';
         //encode in json format
         $jsondata = json_encode($assocArray);
@@ -88,7 +89,7 @@ switch($CMD)
         //setup array for json encoding
         $assocArray = array();
         $assocArray['jsonrpc'] = '2.0';
-        $assocArray['id'] = '1';
+        $assocArray['id'] = $ID;
         $assocArray['result'] = ''.$netversion.'';
         //encode in json format
         $jsondata = json_encode($assocArray);
@@ -101,7 +102,7 @@ switch($CMD)
 	//setup array for json encoding
 	$assocArray = array();
 	$assocArray['jsonrpc'] = '2.0';
-	$assocArray['id'] = '1';
+	$assocArray['id'] = $ID;
 	$assocArray['result'] = ''.hexdec($res).'';
 	//encode in json format
 	$jsondata = json_encode($assocArray);
@@ -114,7 +115,7 @@ switch($CMD)
         //setup array for json encoding
         $assocArray = array();
         $assocArray['jsonrpc'] = '2.0';
-        $assocArray['id'] = '1';
+        $assocArray['id'] = $ID;
         $assocArray['result'] = ''.hexdec($res).'';
         //encode in json format
         $jsondata = json_encode($assocArray);
