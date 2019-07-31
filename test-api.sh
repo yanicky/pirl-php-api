@@ -32,3 +32,9 @@ echo "***";
 echo "Testing net_version with Ethereum chain";
 php index.php --CMD=net_version --chain=Ethereum
 echo "***";
+echo "Testing net_version with Default chain";
+php index.php --CMD=web3_clientVersion
+echo "***";
+echo "Testing net_version with Ethereum chain";
+php index.php --CMD=web3_clientVersion --chain=Ethereum
+echo "***";
