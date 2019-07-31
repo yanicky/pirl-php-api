@@ -68,6 +68,19 @@ default:
 
 switch($CMD)
 	{
+	case "web3_clientVersion":
+        // web3_clientVersion
+        $res = $ethc->web3_clientVersion();
+        $web3_clientVersion = $res;
+        //setup array for json encoding
+        $assocArray = array();
+        $assocArray['jsonrpc'] = '2.0';
+        $assocArray['id'] = '1';
+        $assocArray['result'] = ''.$web3_clientVersion.'';
+        //encode in json format
+        $jsondata = json_encode($assocArray);
+        break;
+		
 	case "net_version":
         // net_version
         $res = $ethc->net_version();
