@@ -104,7 +104,7 @@ switch($CMD)
 	$assocArray = array();
 	$assocArray['jsonrpc'] = '2.0';
 	$assocArray['id'] = intval($ID);
-	$assocArray['result'] = ''$res'';
+	$assocArray['result'] = $res;
 	//encode in json format
 	$jsondata = json_encode($assocArray);
 	break;
