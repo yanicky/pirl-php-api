@@ -29,6 +29,7 @@ $CMD = $_REQUEST['CMD'];
 $CHAIN = $_REQUEST['chain'];
 $RPCHOST = $_REQUEST['rpchost'];
 $RPCPORT = $_REQUEST['rpcport'];
+$BLOCK = $_REQUEST['block'];
 
 // If Required uncomment/force some parameters here
 //$addr = "yourwallethere";
@@ -108,6 +109,20 @@ switch($CMD)
 	$jsondata = json_encode($assocArray);
 	break;
 	
+	case "eth_getBlockByNumber":
+	// eth_getBlockByNumber
+	if(!$BLOCK){$BLOCK = 'latest';}
+	$res = $ethc->eth_getBlockByNumber($BLOCK);
+	$blockdata= hexdec($res);
+	//setup array for json encoding
+	$assocArray = array();
+	$assocArray['jsonrpc'] = '2.0';
+	$assocArray['id'] = intval($ID);
+	$assocArray['result'] = ''.$blockdata.'';
+	//encode in json format
+	$jsondata = json_encode($assocArray);
+	break;	
+		
 	case "peerCount":
         // net_peerCount
         $res = $ethc->net_peerCount();
