@@ -108,20 +108,7 @@ switch($CMD)
 	//encode in json format
 	$jsondata = json_encode($assocArray);
 	break;
-	
-	case "eth_getBlockByNumber":
-	// eth_getBlockByNumber
-	if(!$BLOCK){$BLOCK = 'latest';}
-	$res = $ethc->eth_getBlockByNumber($BLOCK);
-	$blockdata= hexdec($res);
-	//setup array for json encoding
-	$assocArray = array();
-	$assocArray['jsonrpc'] = '2.0';
-	$assocArray['id'] = intval($ID);
-	$assocArray['result'] = ''.$blockdata.'';
-	//encode in json format
-	$jsondata = json_encode($assocArray);
-	break;	
+		
 		
 	case "peerCount":
         // net_peerCount
