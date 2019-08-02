@@ -40,4 +40,4 @@ Feel free to add pull requests or fork it for your own usage.
 
 While the library and some code under the hood has been forked @PhatBlinkie (https://github.com/phatblinkie/pirl-php-api), but the library seem to be from Brandon Telle(2015). Thanks.
 
-This project as been included within https://github.com/yanicky/KaT/ and is this repository will soon be merged here.
+All features of this project has been included within https://github.com/yanicky/KaT/, no more features will be added here.
